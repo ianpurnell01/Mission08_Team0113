@@ -2,6 +2,11 @@
 {
     public interface IHabitsRepository
     {
+        List<Category> Categories { get; }
+        List<Table> Tables { get; }
+
+        public void AddTable(Table task);
+        public void DeleteTable(int taskId);
+        public void EditTable(int taskId);
     }
 }
-sd
