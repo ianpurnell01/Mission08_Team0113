@@ -4,4 +4,40 @@
 @{
 }
 
-<h2>Add Task</h2>
+<h2>Add Task To Quadrant</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="TaskId" />
+
+    <label asp-for="Task">Task:</label><br>
+    <input asp-for="Task" required /><br><br>
+
+    <label asp-for="DueDate">Due Date:</label><br>
+    <input asp-for="DueDate" /><br><br>
+
+    <label asp-for="Quadrant">Quadrant:</label><br>
+    <input asp-for="Quadrand" required /><br><br>
+
+    <select asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+        <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select><br /><br />
+
+
+    <label asp-for="Category">Category:</label><br>
+    <select asp-for="Category">
+        <option value="Home">Home</option>
+        <option value="School">School</option>
+        <option value="Work">Work</option>
+        <option value="Church">Church</option>
+    </select><br /><br />
+
+    <label asp-for="Completed">Completed:</label><br>
+    <input type="radio" asp-for="Completed" value="True"  /> True
+    <input type="radio" asp-for="Complete" value="False"  /> False<br><br>
+
+    <button type="submit">Submit Task</button>
+</form>
