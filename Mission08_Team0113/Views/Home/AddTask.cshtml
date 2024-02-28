@@ -3,6 +3,7 @@
 *@
 @{
 }
+@model Table
 
 <h2>Add Task To Quadrant</h2>
 
@@ -16,7 +17,7 @@
     <input asp-for="DueDate" /><br><br>
 
     <label asp-for="Quadrant">Quadrant:</label><br>
-    <input asp-for="Quadrand" required /><br><br>
+    <input asp-for="Quadrant" required /><br><br>
 
     <select asp-for="CategoryId">
         <option value="">Select a Category</option>
@@ -24,15 +25,6 @@
         {
         <option value="@c.CategoryId">@c.CategoryName</option>
         }
-    </select><br /><br />
-
-
-    <label asp-for="Category">Category:</label><br>
-    <select asp-for="Category">
-        <option value="Home">Home</option>
-        <option value="School">School</option>
-        <option value="Work">Work</option>
-        <option value="Church">Church</option>
     </select><br /><br />
 
     <label asp-for="Completed">Completed:</label><br>
