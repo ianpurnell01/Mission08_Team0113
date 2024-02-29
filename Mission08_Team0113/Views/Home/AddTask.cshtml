@@ -5,31 +5,39 @@
 }
 @model Table
 
-<h2>Add Task To Quadrant</h2>
+<div class="row text-center text-dark">
+    <h2>Add Task To Quadrant</h2>
+</div>
 
-<form method="post">
-    <input type="hidden" asp-for="TaskId" />
 
-    <label asp-for="Task">Task:</label><br>
-    <input asp-for="Task" required /><br><br>
+<div class="row center text-center">
 
-    <label asp-for="DueDate">Due Date:</label><br>
-    <input asp-for="DueDate" /><br><br>
+    <div class="col-12 " style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <form method="post">
+            <input type="hidden" asp-for="TaskId" />
 
-    <label asp-for="Quadrant">Quadrant:</label><br>
-    <input asp-for="Quadrant" required /><br><br>
+            <label asp-for="Task">Task:</label><br>
+            <input asp-for="Task" required /><br><br>
 
-    <select asp-for="CategoryId">
-        <option value="">Select a Category</option>
-        @foreach (Category c in ViewBag.Categories)
-        {
-        <option value="@c.CategoryId">@c.CategoryName</option>
-        }
-    </select><br /><br />
+            <label asp-for="DueDate">Due Date:</label><br>
+            <input asp-for="DueDate" /><br><br>
 
-    <label asp-for="Completed">Completed:</label><br>
-    <input type="radio" asp-for="Completed" value="True"  /> True
-    <input type="radio" asp-for="Completed" value="False"  /> False<br><br>
+            <label asp-for="Quadrant">Quadrant:</label><br>
+            <input asp-for="Quadrant" required /><br><br>
 
-    <button type="submit">Submit Task</button>
-</form>
+            <select asp-for="CategoryId">
+                <option value="">Select a Category</option>
+                @foreach (Category c in ViewBag.Categories)
+                {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+            </select><br /><br />
+
+            <label asp-for="Completed">Completed:</label><br>
+            <input type="radio" asp-for="Completed" value="True"  /> True
+            <input type="radio" asp-for="Completed" value="False"  /> False<br><br>
+
+            <button type="submit">Submit Task</button>
+        </form>
+    </div>
+</div>
