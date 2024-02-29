@@ -24,7 +24,7 @@ namespace Mission08_Team0113.Controllers
         public IActionResult AddTask()
         {
             ViewBag.Categories = _repo.Categories.OrderBy(x => x.CategoryName).ToList();
-            return View("");
+            return View();
         }
 
         [HttpPost]
