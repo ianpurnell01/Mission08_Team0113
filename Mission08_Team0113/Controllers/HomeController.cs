@@ -41,7 +41,18 @@ namespace Mission08_Team0113.Controllers
 
         public IActionResult Quadrant()
         {
-            ViewBag.TaskNames = _repo.Tables.FirstOrDefault(x => x.TaskName == "Brush Teeth");
+            ViewBag.Quadrant1 = _repo.Tables
+                .Where(x => x.Quadrant == 1)
+                .ToList();
+            ViewBag.Quadrant2 = _repo.Tables
+                .Where(x => x.Quadrant == 2)
+                .ToList();
+            ViewBag.Quadrant3 = _repo.Tables
+                .Where(x => x.Quadrant == 3)
+                .ToList();
+            ViewBag.Quadrant4 = _repo.Tables
+                .Where(x => x.Quadrant == 4)
+                .ToList();
             return View();
         }
 
@@ -63,22 +74,20 @@ namespace Mission08_Team0113.Controllers
             return RedirectToAction("Quadrant");
         }
 
-        [HttpGet]
-        public IActionResult Delete(int id)
+        //[HttpGet]
+        //public IActionResult Delete(int id)
+        //{
+        //    var recordToDelete = _repo.Tables
+        //        .Single(x => x.TaskId == id);
+
+        //    return View(Quadrant);
+        //}
+
+        //[HttpPost]
+        public IActionResult Delete(Table record)
         {
-            var recordToDelete = _context.Movies
-                .Single(x => x.MovieId == id);
-
-            return View(recordToDelete);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(NewMovie record)
-        {
-            _context.Movies.Remove(record);
-            _context.SaveChanges();
-
-            return RedirectToAction("MovieList");
+            _repo.DeleteTable(record);
+            return RedirectToAction("Quadrant");
         }
     }
 }
