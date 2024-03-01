@@ -83,7 +83,7 @@ namespace Mission08_Team0113.Controllers
         //    return View(Quadrant);
         //}
 
-        //[HttpPost]
+        [HttpPost]
         public IActionResult Delete(Table record)
         {
             _repo.DeleteTable(record);
