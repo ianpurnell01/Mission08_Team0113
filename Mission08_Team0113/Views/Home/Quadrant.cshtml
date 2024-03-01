@@ -11,22 +11,27 @@
 <div class="container">
     <div>
         <h1 style="text-align: center;"><b>Stephen Covey's Time Management Matrix</b></h1>
-
-
-        <div class="row">
+@*         
+    urgent/non-urgent quadrants
+ *@        <div class="row">
             <div class="col-2 border"></div>
             <div class="col border"><b>Urgent</b></div>
             <div class="col border"><b>Non-Urgent</b></div>
         </div>
+        
+ @*Important/ Q1, Q2 row*@
         <div class="row">
             <div class="col-2 border"><b>Important</b></div>
-
+            @*Quardrant 1 box*@
             <div class="col border">
                 <b>Quadrant 1</b>
+                @* show each task item in Q1*@
                 @foreach (var item in ViewBag.Quadrant1)
                 {
                 <div class="row task-container mb-3">
                         <div class="col">@item.Task</div>
+
+                        @*delete and edit buttons*@
                         <div class="col button-container">
                             <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                             <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
@@ -34,13 +39,19 @@
                     </div>
                 }
             </div>
+
+            @*quadrant 2 box*@
             <div class="col border">
                 <b>Quadrant 2</b>
+                @* show each task item in Q2*@
+
                 @foreach (var item in ViewBag.Quadrant2)
                 {
                 <div class="row task-container mb-3">
                         <div class="col">@item.Task</div>
                         <div class="col button-container">
+
+                            @*delete and edit buttons*@
                             <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                             <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
                         </div>
@@ -48,29 +59,43 @@
                 }
             </div>
         </div>
+
+        @*Quadrants 3,4 and not-imporant row*@
         <div class="row">
             <div class="col-2 border"><b>Not-Important</b></div>
 
+            @*Quadrant 3 box*@
             <div class="col border">
                 <b>Quadrant 3</b>
+                @* show each task item in Q3*@
+
                 @foreach (var item in ViewBag.Quadrant3)
                 {
                 <div class="row task-container mb-3">
                         <div class="col">@item.Task</div>
                         <div class="col button-container">
+
+                            @*delete and edit buttons*@
                             <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                             <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
                         </div>
                     </div>
                 }
             </div>
+
+            @*Quadrant 4 box*@
+
             <div class="col border">
                 <b>Quadrant 4</b>
+                @* show each task item in Q4*@
+
                 @foreach (var item in ViewBag.Quadrant4)
                 {
                 <div class="row task-container mb-3">
                         <div class="col">@item.Task</div>
                         <div class="col button-container">
+
+                            @*delete and edit buttons*@
                             <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                             <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
                         </div>
