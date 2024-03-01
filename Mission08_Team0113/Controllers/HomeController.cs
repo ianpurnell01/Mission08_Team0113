@@ -1,4 +1,4 @@
-using AspNetCore;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0113.Models;
@@ -35,8 +35,19 @@ namespace Mission08_Team0113.Controllers
             if (ModelState.IsValid)
             {
                 _repo.AddTable(t);
+                return View("Confirmation");
             }
-            return View("Confirmation");
+            else
+            {
+                ViewBag.Categories = _repo.Categories
+                    .OrderBy(x => x.CategoryName).ToList();
+                return View(t);
+            }
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
         }
 
         public IActionResult Quadrant()
@@ -56,7 +67,7 @@ namespace Mission08_Team0113.Controllers
             return View();
         }
 
-        //[HttpGet]
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var taskToEdit = _repo.Tables
@@ -64,15 +75,15 @@ namespace Mission08_Team0113.Controllers
             ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
-            return View("Quadrant", taskToEdit);
+            return View("AddTask", taskToEdit);
         }
 
-        //[HttpPost]
-        //public IActionResult Edit(Table updatedinfo)
-        //{
-        //    _repo.EditTable(updatedinfo);
-        //    return RedirectToAction("Quadrant");
-        //}
+        [HttpPost]
+        public IActionResult Edit(Table updatedTask)
+        {
+            _repo.EditTable(updatedTask.TaskId);
+            return RedirectToAction("Quadrant");
+        }
 
         //[HttpGet]
         //public IActionResult Delete(int id)
@@ -80,14 +91,14 @@ namespace Mission08_Team0113.Controllers
         //    var recordToDelete = _repo.Tables
         //        .Single(x => x.TaskId == id);
 
-        //    return View(Quadrant);
+        //    return View(recordToDelete);
         //}
 
         //[HttpPost]
-        //public IActionResult Delete(Table record)
-        //{
-        //    _repo.DeleteTable();
-        //    return RedirectToAction("Quadrant");
-        //}
+        public IActionResult Delete(int id)
+        {
+            _repo.DeleteTable(id);
+            return RedirectToAction("Quadrant");
+        }
     }
 }
