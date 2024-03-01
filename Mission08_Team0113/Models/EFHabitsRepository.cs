@@ -35,7 +35,13 @@
             var existingTask = _context.Tables.FirstOrDefault(t => t.TaskId == task.TaskId);
             if (existingTask != null)
             {
-                existingTask.Task = task.Task; 
+                existingTask.Task = task.Task;
+                //saving the rest of the fields
+                existingTask.DueDate = task.DueDate;
+                existingTask.Quadrant = task.Quadrant;
+                existingTask.CategoryId = task.CategoryId;
+                existingTask.Completed = task.Completed;
+                //end rest of fields
                 _context.SaveChanges();
             }
         }
