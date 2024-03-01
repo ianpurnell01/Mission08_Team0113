@@ -32,17 +32,8 @@ namespace Mission08_Team0113.Controllers
         [HttpPost]
         public IActionResult AddTask(Table t)
         {
-            if (ModelState.IsValid)
-            {
-                _repo.AddTable(t);
-                return View("Confirmation");
-            }
-            else
-            {
-                ViewBag.Categories = _repo.Categories
-                    .OrderBy(x => x.CategoryName).ToList();
-                return View(t);
-            }
+            _repo.AddTable(t);
+            return View("Confirmation");
         }
 
         public IActionResult Confirmation()
