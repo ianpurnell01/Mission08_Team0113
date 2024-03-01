@@ -18,15 +18,15 @@
            _context.SaveChanges();
         }
 
-        public void DeleteTable(int taskId)
+        public void DeleteTable(Table task)
         {
-            _context.Remove(taskId);
+            _context.Remove(task);
             _context.SaveChanges();
         }
 
-        public void EditTable(int taskId)
+        public void EditTable(Table task)
         {
-            _context.Entry(taskId).CurrentValues.SetValues(taskId);
+            _context.Entry(task).CurrentValues.SetValues(task);
             _context.SaveChanges();
         }
 

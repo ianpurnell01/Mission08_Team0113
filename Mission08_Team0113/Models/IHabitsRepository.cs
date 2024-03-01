@@ -6,7 +6,7 @@
         List<Table> Tables { get; }
 
         public void AddTable(Table task);
-        public void DeleteTable(int taskId);
-        public void EditTable(int taskId);
+        public void DeleteTable(Table task);
+        public void EditTable(Table task);
     }
 }

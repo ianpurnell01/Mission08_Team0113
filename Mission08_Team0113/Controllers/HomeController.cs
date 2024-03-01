@@ -44,13 +44,14 @@ namespace Mission08_Team0113.Controllers
         public IActionResult Quadrant()
         {
             ViewBag.Quadrant1 = _repo.Tables
-                .Where(x => x.Quadrant == 1)
+                .Where(x => x.Quadrant == 1 && x.Completed == 0)
                 .ToList();
             ViewBag.Quadrant2 = _repo.Tables
                 .Where(x => x.Quadrant == 2)
                 .ToList();
             ViewBag.Quadrant3 = _repo.Tables
                 .Where(x => x.Quadrant == 3)
+                .Where(x => x.Completed == 0)
                 .ToList();
             ViewBag.Quadrant4 = _repo.Tables
                 .Where(x => x.Quadrant == 4)
@@ -72,23 +73,13 @@ namespace Mission08_Team0113.Controllers
         [HttpPost]
         public IActionResult Edit(Table updatedTask)
         {
-            _repo.EditTable(updatedTask.TaskId);
+            _repo.EditTable(updatedTask);
             return RedirectToAction("Quadrant");
         }
 
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    var recordToDelete = _repo.Tables
-        //        .Single(x => x.TaskId == id);
-
-        //    return View(recordToDelete);
-        //}
-
-        //[HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Table delTask)
         {
-            _repo.DeleteTable(id);
+            _repo.DeleteTable(delTask);
             return RedirectToAction("Quadrant");
         }
     }
