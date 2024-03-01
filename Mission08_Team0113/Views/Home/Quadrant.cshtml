@@ -4,6 +4,9 @@
 @{
 }
 
+@model List<Mission08_Team0113.Models.Table>
+
+
 <div class="box">
     <h1 class="center">Stephen Covey's Time Management Matrix</h1>
 
@@ -17,7 +20,7 @@
             Quadrant 1
             @foreach (var item in ViewBag.Quadrant1)
             {
-                <div>@item.YourDataProperty</div>
+                <div>@item.Task</div>
                 <div>
                     <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                     <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
@@ -28,7 +31,7 @@
             Quadrant 2
             @foreach (var item in ViewBag.Quadrant2)
             {
-                <div>@item.YourDataProperty</div>
+                <div>@item.Task</div>
                 <div>
                     <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                     <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
@@ -41,7 +44,7 @@
             Quadrant 3
             @foreach (var item in ViewBag.Quadrant3)
             {
-                <div>@item.YourDataProperty</div>
+                <div>@item.Task</div>
                 <div>
                     <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                     <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
@@ -52,7 +55,7 @@
             Quadrant 4
             @foreach (var item in ViewBag.Quadrant4)
             {
-                <div>@item.YourDataProperty</div>
+                <div>@item.Task</div>
                 <div>
                     <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@item.TaskId">Edit</a>
                     <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
