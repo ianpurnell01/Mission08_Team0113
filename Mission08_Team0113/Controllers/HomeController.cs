@@ -56,7 +56,7 @@ namespace Mission08_Team0113.Controllers
             return View();
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Edit(int id)
         {
             var taskToEdit = _repo.Tables
@@ -67,12 +67,12 @@ namespace Mission08_Team0113.Controllers
             return View("Quadrant", taskToEdit);
         }
 
-        [HttpPost]
-        public IActionResult Edit(Table updatedinfo)
-        {
-            _repo.EditTable(updatedinfo);
-            return RedirectToAction("Quadrant");
-        }
+        //[HttpPost]
+        //public IActionResult Edit(Table updatedinfo)
+        //{
+        //    _repo.EditTable(updatedinfo);
+        //    return RedirectToAction("Quadrant");
+        //}
 
         //[HttpGet]
         //public IActionResult Delete(int id)
@@ -84,10 +84,10 @@ namespace Mission08_Team0113.Controllers
         //}
 
         //[HttpPost]
-        public IActionResult Delete(Table record)
-        {
-            _repo.DeleteTable(record);
-            return RedirectToAction("Quadrant");
-        }
+        //public IActionResult Delete(Table record)
+        //{
+        //    _repo.DeleteTable();
+        //    return RedirectToAction("Quadrant");
+        //}
     }
 }
