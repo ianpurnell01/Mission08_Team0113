@@ -24,11 +24,23 @@
             _context.SaveChanges();
         }
 
+        //public void EditTable(Table task)
+        //{
+        //    _context.Entry(task).CurrentValues.SetValues(task);
+        //    _context.SaveChanges();
+        //}
+
         public void EditTable(Table task)
         {
-            _context.Entry(task).CurrentValues.SetValues(task);
-            _context.SaveChanges();
+            var existingTask = _context.Tables.FirstOrDefault(t => t.TaskId == task.TaskId);
+            if (existingTask != null)
+            {
+                existingTask.Task = task.Task; 
+                _context.SaveChanges();
+            }
         }
+
+
 
 
 

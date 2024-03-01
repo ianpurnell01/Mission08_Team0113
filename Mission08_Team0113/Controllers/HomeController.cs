@@ -59,15 +59,40 @@ namespace Mission08_Team0113.Controllers
             return View();
         }
 
+        //[HttpGet]
+        //public IActionResult Edit(int id)
+        //{
+        //    var taskToEdit = _repo.Tables
+        //        .Single(x => x.TaskId == id);
+        //    ViewBag.Categories = _repo.Categories
+        //        .OrderBy(x => x.CategoryName)
+        //        .ToList();
+        //    return View("AddTask", taskToEdit);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Edit(Table updatedTask)
+        //{
+        //    _repo.EditTable(updatedTask);
+        //    return RedirectToAction("Quadrant");
+        //}
+
+        //public IActionResult Delete(Table delTask)
+        //{
+        //    _repo.DeleteTable(delTask);
+        //    return RedirectToAction("Quadrant");
+        //}
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var taskToEdit = _repo.Tables
-                .Single(x => x.TaskId == id);
-            ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.CategoryName)
-                .ToList();
-            return View("AddTask", taskToEdit);
+            var taskToEdit = _repo.Tables.FirstOrDefault(x => x.TaskId == id);
+            if (taskToEdit != null)
+            {
+                ViewBag.Categories = _repo.Categories.OrderBy(x => x.CategoryName).ToList();
+                return View("AddTask", taskToEdit);
+            }
+            return RedirectToAction("Quadrant");
         }
 
         [HttpPost]
@@ -77,10 +102,16 @@ namespace Mission08_Team0113.Controllers
             return RedirectToAction("Quadrant");
         }
 
-        public IActionResult Delete(Table delTask)
+
+        public IActionResult Delete(int id)
         {
-            _repo.DeleteTable(delTask);
+            var delTask = _repo.Tables.FirstOrDefault(x => x.TaskId == id);
+            if (delTask != null)
+            {
+                _repo.DeleteTable(delTask);
+            }
             return RedirectToAction("Quadrant");
         }
+
     }
 }
