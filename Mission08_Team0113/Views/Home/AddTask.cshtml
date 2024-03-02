@@ -9,7 +9,8 @@
     <h2>Add Task To Quadrant</h2>
 </div>
 
-
+@* form that recieves the requested data and then submits it to be added to the database.
+ *@
 <div class="row center text-center">
 
     <div class="col-12 " style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
@@ -23,8 +24,9 @@
             <input asp-for="DueDate" /><br><br>
 
             <label asp-for="Quadrant">Quadrant:</label><br>
-            <input asp-for="Quadrant" required /><br><br>
+            <input asp-for="Quadrant" required min="1" max="4" /><br><br>
 
+            @*For loop to go through each of the categories and select the one picked.*@            
             <select asp-for="CategoryId">
                 <option value="">Select a Category</option>
                 @foreach (Category c in ViewBag.Categories)
